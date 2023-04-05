@@ -13,11 +13,12 @@ def solution(p: float, x: np.array) -> tuple:
     # Не меняйте название функции и её аргументы
     time_92 = 92
     alpha = 1 - p
-    semians = max(x)
-    left = semians - math.log(alpha)/len(x)
-    right = semians - math.log(1-alpha)/len(x)
-    left -= 1/2
-    right -= 1/2
+    semians = 0
+    for i in range(len(x)):
+      semians += x[i]
+    semians /= len(x)
+    left = semians - 1/2 - scipy.stats.gamma.ppf((1+alpha)/2, len(x))/len(x)
+    right = semians - 1/2 - scipy.stats.gamma.ppf((1-alpha)/2, len(x))/len(x)
     left /= (time_92*time_92)
     right /= (time_92*time_92)
     left *= 2

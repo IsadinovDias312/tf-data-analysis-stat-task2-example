@@ -17,8 +17,8 @@ def solution(p: float, x: np.array) -> tuple:
     for i in range(len(x)):
       semians += x[i]
     semians /= len(x)
-    left = semians - scipy.stats.gamma.ppf(1-alpha/2, 1)/len(x)
-    right = semians - scipy.stats.gamma.ppf(alpha/2, 1)/len(x)
+    left = semians - scipy.stats.gamma.ppf((1+alpha)/2, 1)/len(x)
+    right = semians - scipy.stats.gamma.ppf((1-alpha)/2, 1)/len(x)
     left += 1/2
     right += 1/2
     left /= time_92*time_92
